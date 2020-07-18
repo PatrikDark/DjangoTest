@@ -1,0 +1,55 @@
+{% extends 'foo/base.html' %}
+
+{% block content %}
+
+
+<section class="text-gray-500 bg-gray-900 body-font relative">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-col text-center w-full mb-12">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Sign In</h1>
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Please Enter Your Credentials </p>
+
+         {% if messages %}
+                    {% for message in messages %}
+                              <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">{{ message }}</h1>
+
+                    {% endfor %}
+        {% endif %}
+
+
+    </div>
+    <div class="lg:w-1/2 md:w-2/3 mx-auto">
+        <form method="post" action="" class="lg:w-1/2 md:w-2/3 mx-auto">
+        {% csrf_token %}
+
+      <div class="flex flex-wrap -m-2">
+
+        <div class="p-2 w-full">
+            <input id="username" class="w-full bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-base px-4 py-2" placeholder="Username" name="username" type="text" required="">
+
+        </div>
+
+          <div class="p-2 w-full">
+              <input id="password" class="w-full bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-indigo-500 text-base px-4 py-2" placeholder="Password" name="password" type="password" required="">
+
+        </div>
+
+
+
+        <div class="p-2 w-full">
+          <button type="submit" class="flex mx-auto text-white bg-teal-500 border-0 py-2 px-8 focus:outline-none hover:bg-teal-600 rounded text-lg">Register</button>
+        </div>
+         <div class="p-2 w-full">
+
+             <br>
+             <h4 align="center" >Don't Have An Account? <a href="{% url 'register' %}">Sign Up</a></h4>
+         </div>
+      </div>
+    </form>
+        <br><br><br><br><br><br><br>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+

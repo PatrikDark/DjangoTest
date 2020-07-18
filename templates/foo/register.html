@@ -1,0 +1,61 @@
+{% extends 'foo/base.html' %}
+
+{% block content %}
+
+
+<section class="text-gray-500 bg-gray-900 body-font relative">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-col text-center w-full mb-12">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Sign up</h1>
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Please Enter All the Information</p>
+
+
+    <br>
+     {% if messages %}
+                    {% for message in messages %}
+                              <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">{{ message }}</h1>
+
+                    {% endfor %}
+     {% endif %}
+    </div>
+    <div class="lg:w-1/2 md:w-2/3 mx-auto">
+        <form method="post" action="" class="lg:w-1/2 md:w-2/3 mx-auto">
+        {% csrf_token %}
+           {% load widget_tweaks %}
+      <div class="flex flex-wrap -m-2">
+        <div class="p-2 w-full">
+
+             {% render_field form.username class="w-full bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-teal-500 text-base px-4 py-2" placeholder="Name"%}
+            {{ form.errors.username }}
+        </div>
+          <div class="p-2 w-full">
+
+             {% render_field form.email class="w-full bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-teal-500 text-base px-4 py-2" placeholder="Email"%}
+            {{ form.errors.email }}
+        </div>
+
+        <div class="p-2 w-full">
+            {% render_field form.password1 class="w-full bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-teal-500 text-base px-4 py-2" placeholder="Password"%}
+            {{ form.errors.password1 }}
+        </div>
+          <div class="p-2 w-full">
+            {% render_field form.password2 class="w-full bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-teal-500 text-base px-4 py-2" placeholder="Confirm password"%}
+            {{ form.errors.password2 }}
+        </div>
+        <div class="p-2 w-full">
+          <button type="submit" class="flex mx-auto text-white bg-teal-500 border-0 py-2 px-8 focus:outline-none hover:bg-teal-600 rounded text-lg">Register</button>
+        </div>
+         <div class="p-2 w-full">
+
+             <br>
+             <h4 align="center" >Already Have An Account? <a href="{% url 'login' %}">Sign In</a></h4>
+         </div>
+      </div>
+    </form>
+        <br><br><br><br>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
